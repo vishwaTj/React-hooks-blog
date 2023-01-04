@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { firestore } from "../firebase";
+import {useFormInput} from '../hooks';
+
 
 function CreatePost() {
-    const[title,setTitle] = useState();
-    const[subtitle,setsubtitle] = useState();
-    const[Content,setContent] = useState();
-
+    const title = useFormInput('');
+    const subtitle = useFormInput('');
+    const Content = useFormInput('');
+    
 
     function handleSubmit(e){
         e.preventDefault(); // so that on submit page does not get reloaded by default
@@ -16,9 +18,9 @@ function CreatePost() {
 
 
       firestore.collection('posts').add({
-        title,
-        subtitle,
-        Content,
+        title:title.value,
+        subtitle:subtitle.value,
+        Content:Content.value,
         created_at:new Date()
       });
 
@@ -30,17 +32,18 @@ function CreatePost() {
         <form onSubmit={handleSubmit}>
          <div className="form-field">
            <label>Title</label>
-           <input values={title} onChange={(e)=>{ setTitle(e.target.value) }}/>
+           {/* using spread operator because the function returns an object containing both conditions */}
+           <input {...title}/>
          </div>
 
          <div className="form-field">
            <label>Sub Title</label>
-           <input values={subtitle} onChange={(e)=>{ setsubtitle(e.target.value) }}/>
+           <input {...subtitle}/>
          </div>
 
          <div className="form-field">
            <label>Content</label>
-           <textarea values={Content} onChange={(e)=>{ setContent(e.target.value) }}></textarea>
+           <textarea {...Content}></textarea>
          </div>
 
          

@@ -1,5 +1,5 @@
 // this file is a custom hook file
-import {usestate} from "react";
+import {useState} from "react";
 
 export function useFormInput(initialValue){
     const[value, setValue] = useState(initialValue);
@@ -10,6 +10,6 @@ export function useFormInput(initialValue){
 
     return {
         value,
-        onchange:handleChange
+        onChange:handleChange
     }
 }
