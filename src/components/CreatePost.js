@@ -2,6 +2,8 @@ import { useState } from "react";
 import { firestore } from "../firebase";
 import {useFormInput} from '../hooks';
 
+// webpack will create unique classes and apply it to particular element only
+import classes from './Button.module.css'; 
 
 function CreatePost() {
     const title = useFormInput('');
@@ -48,7 +50,7 @@ function CreatePost() {
 
          
 
-         <button className="create-post-btn">Create Post</button>
+         <button className={classes.createPostBtn}>Create Post</button>
         </form>
     </div>
   }

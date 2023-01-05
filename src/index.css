@@ -37,12 +37,14 @@ code {
   font-weight: bold;
   color: black;
 }
+
 .home .post h3:hover {
   color: #2196f3;
 }
-.home .post p {
+
+/* .home .post p {
   font-size: 13px;
-}
+} */
 
 #blog-by {
   text-align: center;
